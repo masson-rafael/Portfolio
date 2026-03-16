@@ -22,14 +22,14 @@ export class Parcours {
   protected readonly experiences = signal<ParcoursItem[]>([
     {
       title: 'Développement Web Fullstack',
-      description: 'Je réalise mon alternance en développement web chez Salamandre, où je participe à une évolution majeure de l\'application Fusion, conçue pour la restauration collective. Le projet consiste notamment à migrer l\'application d\'AngularJS vers Angular 20+, tout en modernisant l\'interface et en développant de nouveaux modules. J\'ai également été intégré au fonctionnement de l\'équipe en prenant part aux différentes réunions, ce qui m\'a permis de développer mes compétences en gestion de projet et de travail en équipe.',
+      description: 'J\'effectue mon alternance en développement web chez Salamandre, où je participe à une évolution majeure de l\'application Fusion, conçue pour la restauration collective. Le projet consiste notamment à migrer l\'application d\'AngularJS vers Angular 20+, tout en modernisant l\'interface et en développant de nouveaux modules. J\'ai également été intégré au fonctionnement de l\'équipe en prenant part aux différentes réunions, ce qui m\'a permis de développer mes compétences en gestion de projet et de travail en équipe.',
       location: 'Salamandre - Toulouse, France',
-      period: 'Septembre 2025 - Présent',
+      period: 'Depuis Septembre 2025',
       badge: 'Alternance',
     },
     {
       title: 'Développement Web Fullstack',
-      description: 'Stage de 10 semaines en tant que développeur fullstack. J\'ai développé une application web interne complète, en intervenant aussi bien sur le front-end que sur le back-end, ainsi que la base de données. Elle permet aux employés de signaler leurs présences de manière calendaire dans les locaux, intégrant sécurité et une interface ergonomique.',
+      description: 'Stage de 10 semaines en tant que développeur fullstack. J\'ai développé une application web interne complète, en intervenant aussi bien sur le front-end que sur le back-end, ainsi que la base de données. Elle permet aux employés de signaler leurs présences de manière calendaire dans les locaux, intégrant sécurité et interface ergonomique.',
       location: 'Salamandre - Toulouse, France',
       period: 'Avril 2025 - Juin 2025',
       badge: 'Stage',
