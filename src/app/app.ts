@@ -10,20 +10,7 @@ import { Contact } from './components/contact/contact';
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [Header, About, Skills, Parcours, Portfolio, Contact],
-  template: `
-    <app-header />
-    <main>
-      <app-about />
-      <app-portfolio />
-      <app-parcours />
-      <app-skills />
-      <app-contact />
-    </main>
-  `,
-  styles: `
-    main {
-      margin-top: 0;
-    }
-  `,
+  templateUrl: './app.html',
+  styleUrl: './app.css',
 })
 export class App {}
