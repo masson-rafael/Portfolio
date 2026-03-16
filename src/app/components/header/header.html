@@ -1,7 +1,8 @@
 <header id="header">
-  <nav class="navbar" aria-label="Navigation principale">
-    <div class="navbar-logo">
-      <a href="#header" aria-label="Retour en haut">RM</a>
+  <nav class="navbar" [class.transparent]="isAtTop()" aria-label="Navigation principale">
+    <div class="navbar-branding">
+      <a href="#header" class="navbar-logo" aria-label="Retour en haut">RM</a>
+      <span class="navbar-name">Rafael Masson</span>
     </div>
     <ul class="navbar-list" role="list">
       @for (link of navLinks(); track link.fragment) {
@@ -14,6 +15,11 @@
           CV
           <i class="fas fa-download" aria-hidden="true"></i>
         </a>
+      </li>
+      <li>
+        <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDarkMode() ? 'Passer au mode clair' : 'Passer au mode sombre'">
+          <i class="fas" [class.fa-sun]="isDarkMode()" [class.fa-moon]="!isDarkMode()" aria-hidden="true"></i>
+        </button>
       </li>
     </ul>
   </nav>

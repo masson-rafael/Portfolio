@@ -4,87 +4,186 @@
 
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #333;
-  padding: 10px 20px;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1100px;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: var(--bg-main);
+  background: color-mix(in srgb, var(--bg-main) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px 25px;
+  border-radius: 50px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
 }
 
-.navbar-logo a {
-  font-size: 18px;
-  font-weight: bold;
+.navbar.transparent {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  border-color: transparent;
+  width: 100%;
+  padding-top: 25px;
+}
+
+.navbar-branding {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-logo {
+  font-size: 20px;
+  font-weight: 700;
   color: #fff;
   text-decoration: none;
-  padding: 5px 10px;
-  background-color: var(--orange);
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 44px;
+  height: 44px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.navbar-logo a:hover {
-  background-color: var(--orange-dark);
-  transform: scale(1.1);
+.navbar-logo:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.navbar-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
 }
 
 .navbar-list {
   list-style: none;
   display: flex;
   margin: 0;
-  padding: 0 25px 0 0;
+  padding: 0;
   gap: 30px;
+  align-items: center;
 }
 
 .navbar-list a {
   text-decoration: none;
-  color: #fff;
+  color: var(--text-main);
   font-size: 16px;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  transition: var(--transition);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  position: relative;
+}
+
+.navbar-list a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--secondary);
+  transition: var(--transition);
+  border-radius: 2px;
 }
 
 .navbar-list a:hover {
-  color: var(--orange);
+  color: var(--secondary);
+}
+
+.navbar-list a:hover::after {
+  width: 100%;
+}
+
+/* CV Button Specific Style */
+.navbar-list li:nth-last-child(2) a {
+  background-color: var(--text-main);
+  color: var(--bg-main);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.navbar-list li:nth-last-child(2) a::after {
+  display: none;
+}
+
+.navbar-list li:nth-last-child(2) a:hover {
+  background-color: var(--secondary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: var(--border-light);
+  color: var(--secondary);
+  transform: rotate(15deg);
 }
 
 .hero {
   text-align: center;
-  background: url('/images/background.png') no-repeat center center / cover;
+  /* Multi-color gradient to make it pop and vibrant */
+  background: linear-gradient(to right, rgba(180, 222, 115, 0.7), rgba(222, 98, 115, 0.7)), url('/images/background.png') no-repeat center center / cover;
   color: white;
-  padding: 280px 20px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 20px;
 }
 
 .header-title,
 .header-subtitle {
-  background-color: rgba(0, 0, 0, 0.35);
-  padding: 10px 20px;
-  border-radius: var(--radius);
+  /* Removed heavy black box for a more modern text-shadow approach */
+  background-color: transparent;
+  padding: 0;
   margin: 10px 0;
-  width: fit-content;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0; /* will be changed by animation */
 }
 
 .header-title {
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .header-subtitle {
-  font-size: 24px;
-  font-weight: 300;
-  margin-top: 0;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--bg-main);
+  animation-delay: 0.2s; /* Step in after title */
 }
 
 @media (max-width: 768px) {
@@ -93,14 +192,14 @@
   }
 
   .hero {
-    padding: 150px 20px;
+    min-height: 80vh;
   }
 
   .header-title {
-    font-size: 32px;
+    font-size: 2.5rem;
   }
 
   .header-subtitle {
-    font-size: 18px;
+    font-size: 1.2rem;
   }
 }

@@ -1,42 +1,47 @@
 :host {
   display: block;
-  background-color: var(--bg-white);
+  background-color: transparent;
+  padding: 80px 20px;
 }
 
 .parcours-tabs {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 30px;
+  gap: 15px;
+  margin-bottom: 40px;
 }
 
 .parcours-tabs button {
-  background-color: white;
-  color: var(--text);
-  padding: 8px 20px;
-  border: 2px solid var(--border);
-  border-radius: 25px;
+  background-color: var(--bg-main);
+  color: var(--text-light);
+  padding: 10px 22px;
+  border: 1px solid var(--border-light);
+  border-radius: 30px;
   font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .parcours-tabs button.active {
-  background-color: var(--orange);
-  color: white;
-  border-color: var(--orange);
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
 }
 
 .parcours-tabs button:hover:not(.active) {
-  border-color: var(--orange);
-  color: var(--orange);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
 .timeline {
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 40px 0;
 }
 
 .timeline::before {
@@ -45,9 +50,10 @@
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 3px;
-  background: var(--border);
+  width: 4px;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
   transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .timeline-item {
@@ -56,53 +62,69 @@
   justify-content: flex-start;
   padding: 20px 0;
   width: 50%;
-  padding-right: 40px;
+  padding-right: 50px;
 }
 
 .timeline-item.right {
   margin-left: 50%;
   padding-right: 0;
-  padding-left: 40px;
+  padding-left: 50px;
 }
 
 .timeline-dot {
   position: absolute;
   top: 50%;
-  width: 32px;
-  height: 32px;
-  background-color: var(--orange);
+  width: 40px;
+  height: 40px;
+  background-color: var(--secondary);
   border-radius: 50%;
   transform: translateY(-50%);
-  right: -16px;
+  right: -20px;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 0 4px var(--bg-main), var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: translateY(-50%) scale(1.15);
+  background-color: var(--primary);
 }
 
 .timeline-dot i {
   color: white;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .timeline-item.right .timeline-dot {
-  left: -16px;
+  left: -20px;
   right: auto;
 }
 
 .timeline-content {
-  background: var(--bg-gray);
-  padding: 20px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  background: var(--bg-card);
+  padding: 25px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
   text-align: left;
   width: 100%;
+  border: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-content {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary);
 }
 
 .timeline-content h3 {
-  font-size: 18px;
+  font-size: 1.3rem;
   margin: 0 0 8px;
-  color: var(--text);
+  color: var(--text-main);
+  font-weight: 700;
 }
 
 .title-row {
@@ -115,43 +137,49 @@
 .experience-badge {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
+  padding: 6px 14px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
   line-height: 1;
   white-space: nowrap;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-sm);
 }
 
 .experience-badge.is-alternance {
-  background-color: #e8f7ee;
-  color: #177245;
+  background-color: var(--primary);
+  color: #fff;
 }
 
 .experience-badge.is-stage {
-  background-color: #fff2df;
-  color: #9a5b00;
+  background-color: var(--secondary);
+  color: #fff;
 }
 
 .timeline-content p {
-  margin: 4px 0;
+  margin: 6px 0;
   color: var(--text-light);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .timeline-content .location {
   font-style: italic;
   color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 .timeline-content .location i {
-  margin-right: 4px;
+  margin-right: 6px;
+  color: var(--tertiary);
 }
 
 .period {
   display: inline-block;
   margin-top: 8px;
-  background-color: var(--orange);
+  background-color: var(--secondary);
   color: white;
   padding: 3px 12px;
   border-radius: 12px;

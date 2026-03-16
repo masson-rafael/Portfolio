@@ -1,6 +1,7 @@
 :host {
   display: block;
-  background-color: var(--bg-white);
+  background-color: transparent;
+  padding: 80px 20px;
 }
 
 .about-content {
@@ -15,25 +16,44 @@
 .about-photo-container {
   position: relative;
   flex-shrink: 0;
+  width: 250px;
+  height: 350px;
+}
+
+.img-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 1;
 }
 
 .about-photo-container img {
-  border-radius: 10px;
-  border: 3px solid var(--border);
-  box-shadow: var(--shadow);
+  border: none;
   object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.15); /* Zoom in */
+  transform-origin: top left;
 }
 
 .about-photo-container::before {
   content: "";
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 20px;
+  left: 20px;
   width: 250px;
   height: 350px;
-  border: 2px solid var(--orange);
-  border-radius: 10px;
-  z-index: -1;
+  border: 3px solid var(--primary);
+  border-radius: var(--radius);
+  z-index: 0;
+  transition: transform 0.3s ease;
+}
+
+.about-photo-container:hover::before {
+  transform: translate(-5px, -5px);
 }
 
 .about-info {
@@ -44,49 +64,59 @@
 .about-tabs {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 15px;
+  margin-bottom: 25px;
   flex-wrap: wrap;
 }
 
 .about-tabs button {
-  background-color: white;
-  color: var(--text);
-  padding: 8px 18px;
-  border: 2px solid var(--border);
-  border-radius: 25px;
+  background-color: var(--bg-main);
+  color: var(--text-light);
+  padding: 10px 22px;
+  border: 1px solid var(--border-light);
+  border-radius: 30px;
   font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .about-tabs button.active {
-  background-color: var(--orange);
-  color: white;
-  border-color: var(--orange);
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
 }
 
 .about-tabs button:hover:not(.active) {
-  border-color: var(--orange);
-  color: var(--orange);
+  border-color: var(--secondary);
+  color: var(--secondary);
+  transform: translateY(-2px);
 }
 
 .about-text {
-  background: white;
-  padding: 24px;
+  background: var(--bg-main);
+  padding: 30px;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  border: 1px solid #e0e0e0;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
   font-size: 16px;
-  color: var(--text);
-  line-height: 1.7;
+  color: var(--text-main);
+  line-height: 1.8;
   text-align: left;
   min-height: 200px;
+  transition: var(--transition);
+}
+
+.about-text:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .about-text h4 {
-  color: var(--orange);
-  margin: 16px 0 8px;
+  color: var(--tertiary);
+  margin: 20px 0 10px;
+  font-size: 1.2rem;
 }
 
 .about-text h4:first-child {

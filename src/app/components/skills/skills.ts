@@ -29,7 +29,7 @@ export class Skills {
         { name: 'Angular', icon: 'fab fa-angular', color: '#DD0031' },
         { name: 'Vue.js', icon: 'fab fa-vuejs', color: '#4FC08D' },
         { name: 'Laravel', icon: 'fab fa-laravel', color: '#FF2D20' },
-        { name: 'Django', icon: 'fab fa-python', color: '#092E20' },
+        { name: 'Django', icon: 'fab fa-python', color: '#ffc107' },
         { name: 'Node.js', icon: 'fab fa-node-js', color: '#339933' },
         { name: 'Express.js', icon: 'fas fa-server' },
       ],

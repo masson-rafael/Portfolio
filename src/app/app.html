@@ -1,8 +1,12 @@
 <app-header />
-<main>
-  <app-about />
-  <app-portfolio />
-  <app-parcours />
-  <app-skills />
-  <app-contact />
+<main class="page-container">
+  <div class="section-wrapper animate-fade-in" id="about"><app-about /></div>
+  <hr class="section-separator" aria-hidden="true" />
+  <div class="section-wrapper" id="portfolio"><app-portfolio /></div>
+  <hr class="section-separator" aria-hidden="true" />
+  <div class="section-wrapper" id="parcours"><app-parcours /></div>
+  <hr class="section-separator" aria-hidden="true" />
+  <div class="section-wrapper" id="skills"><app-skills /></div>
+  <hr class="section-separator" aria-hidden="true" />
+  <div class="section-wrapper" id="contact"><app-contact /></div>
 </main>

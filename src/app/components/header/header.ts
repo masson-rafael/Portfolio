@@ -1,4 +1,5 @@
-import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy, Inject, PLATFORM_ID, OnInit, HostListener } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 interface NavLink {
   label: string;
@@ -9,9 +10,9 @@ interface NavLink {
   selector: 'app-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.html',
-  styleUrl: './header.css',
+  styleUrl: './header.css'
 })
-export class Header {
+export class Header implements OnInit {
   protected readonly navLinks = signal<NavLink[]>([
     { label: 'À propos', fragment: 'about' },
     { label: 'Portfolio', fragment: 'portfolio' },
@@ -19,4 +20,45 @@ export class Header {
     { label: 'Compétences', fragment: 'skills' },
     { label: 'Me contacter', fragment: 'contact' },
   ]);
+
+  protected readonly isDarkMode = signal<boolean>(false);
+  protected readonly isAtTop = signal<boolean>(true);
+
+  constructor(@Inject(DOCUMENT) private document: Document, @Inject(PLATFORM_ID) private platformId: Object) {}
+
+  @HostListener('window:scroll')
+  onScroll() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.isAtTop.set(window.scrollY < 20);
+    }
+  }
+
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.isAtTop.set(window.scrollY < 20);
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const savedTheme = localStorage.getItem('theme');
+      
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        this.isDarkMode.set(true);
+        this.applyTheme();
+      }
+    }
+  }
+
+  protected toggleTheme() {
+    this.isDarkMode.update(v => !v);
+    this.applyTheme();
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('theme', this.isDarkMode() ? 'dark' : 'light');
+    }
+  }
+
+  private applyTheme() {
+    if (this.isDarkMode()) {
+      this.document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      this.document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }
 }

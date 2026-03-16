@@ -1,35 +1,58 @@
 :host {
   display: block;
-  background-color: var(--bg-gray);
+  background-color: transparent;
+  padding: 80px 20px;
 }
 
 .category-title {
-  color: var(--orange);
-  font-size: 18px;
-  margin-bottom: 12px;
+  color: var(--tertiary);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--secondary-light);
+  border-radius: 2px;
 }
 
 .skill-card {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: var(--bg-white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 10px 16px;
-  transition: transform 0.2s ease;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  padding: 12px 20px;
+  transition: var(--transition);
+  font-weight: 500;
+  color: var(--text-main);
 }
 
 .skill-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
 }
 
 .skill-card i {
-  font-size: 1.4rem;
-  color: var(--orange);
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
   min-width: 24px;
   text-align: center;
+}
+
+.skill-card:hover i {
+  transform: rotate(10deg);
 }
 
 .skill-name {

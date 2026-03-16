@@ -1,4 +1,4 @@
-<section id="portfolio" aria-labelledby="portfolio-title">
+<section aria-labelledby="portfolio-title" class="colorful-bg">
   <h2 id="portfolio-title">- Portfolio -</h2>
 
   <div class="container-xl">
@@ -17,7 +17,13 @@
                   <i class="fab fa-github" aria-hidden="true"></i> Voir sur GitHub
                 </a>
               }
-              <p class="card-languages">{{ project.languages }}</p>
+              <div class="card-languages">
+                @for (tech of project.technologies; track tech) {
+                  <span class="tech-badge" [style.background-color]="getTechColor(tech)">
+                    {{ tech }}
+                  </span>
+                }
+              </div>
             </div>
           </article>
         </div>
