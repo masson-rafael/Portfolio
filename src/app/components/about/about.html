@@ -1,0 +1,97 @@
+<section id="about" aria-labelledby="about-title">
+  <h2 id="about-title">- À propos -</h2>
+  <div class="about-content">
+    <div class="about-photo-container">
+      <img ngSrc="images/portrait.jpeg" alt="Photo de Rafael Masson" width="250" height="350" priority>
+    </div>
+    <div class="about-info">
+      <div class="about-tabs" role="tablist" aria-label="Informations personnelles">
+        @for (tab of tabs(); track tab.id) {
+          <button
+            role="tab"
+            [attr.aria-selected]="activeTab() === tab.id"
+            [attr.aria-controls]="'panel-' + tab.id"
+            [class.active]="activeTab() === tab.id"
+            (click)="selectTab(tab.id)">
+            {{ tab.label }}
+          </button>
+        }
+      </div>
+      <div class="about-text">
+        @switch (activeTab()) {
+          @case ('presentation') {
+            <div id="panel-presentation" role="tabpanel" aria-labelledby="tab-presentation">
+              <p>
+                Actuellement étudiant en 3ème année de BUT Informatique, je suis en alternance en développement web (Angular) chez Salamandre à Toulouse. 
+                Je recherche actuellement un master en informatique pour la rentrée 2026, avec une spécialisation en développement web, logiciel, cybersécurité ou en IA.
+              </p>
+              <p>
+                J'oriente mes études dans ce domaine, guidé par mon désir d'apprendre et ma curiosité. En tant
+                que passionné, j'aime créer des projets personnels, dans le but de monter en compétences. Le développement est
+                apparu comme une évidence lors de mes formations.
+              </p>
+              <p>
+                Si vous souhaitez en apprendre plus sur moi, ou me contacter,
+                n'hésitez plus, vous pouvez explorer ce site et télécharger mon CV !
+              </p>
+            </div>
+          }
+          @case ('langues') {
+            <div id="panel-langues" role="tabpanel" aria-labelledby="tab-langues">
+              <ul class="langues-list">
+                <li>
+                  <img ngSrc="images/france.png" alt="Drapeau français" width="48" height="32">
+                  <span>Français : Langue native</span>
+                </li>
+                <li>
+                  <img ngSrc="images/anglais.png" alt="Drapeau anglais" width="48" height="32">
+                  <div>
+                    <span>Anglais : Intermédiaire Avancé (B2)</span>
+                    <br>
+                    <small>TOEIC B2 - 895 pts (janvier 2026)</small>
+                  </div>
+                </li>
+                <li>
+                  <img ngSrc="images/espagnol.png" alt="Drapeau espagnol" width="48" height="32">
+                  <span>Espagnol : Débutant (A2)</span>
+                </li>
+              </ul>
+            </div>
+          }
+          @case ('softskills') {
+            <div id="panel-softskills" role="tabpanel" aria-labelledby="tab-softskills">
+              <ul class="softskills-list">
+                <li>Quelqu'un de <strong>calme, sympathique et optimiste</strong></li>
+                <li>J'aime en <strong>apprendre</strong> toujours plus</li>
+                <li>Je suis <strong>ponctuel</strong> et j'ai une bonne <strong>gestion du temps</strong></li>
+                <li>Doté d'un <strong>esprit d'équipe</strong>, j'agis toujours pour maintenir une collaboration positive</li>
+                <li>J'aime trouver la <strong>solution</strong> la plus <strong>simple</strong> pour répondre à un besoin</li>
+              </ul>
+            </div>
+          }
+          @case ('passions') {
+            <div id="panel-passions" role="tabpanel" aria-labelledby="tab-passions">
+              <h4>Handball</h4>
+              <p>
+                Je joue au handball depuis 2021, formé au club de la SICSBT Handball.
+                J'ai joué en tant que gardien de but en -18 ans et en senior.
+                Cela m'a permis de renforcer mon esprit d'équipe.
+              </p>
+              <h4>Monter des ordinateurs</h4>
+              <p>
+                Je me passionne depuis 2017 pour le montage d'ordinateurs : j'ai monté mon propre ordinateur et
+                aidé des amis à trouver de bonnes pièces compatibles, puis à monter leurs ordinateurs.
+              </p>
+              <h4>Coder</h4>
+              <p>
+                J'ai pris goût à la programmation en 2018 avec Python et les langages web. La SNT puis la NSI
+                ont renforcé mon niveau. En BUT Informatique, j'ai appris le C, C++, Java, JS, PHP, SQL, Bash,
+                ainsi que des frameworks comme Angular et Laravel, et l'outil de versionnement Git.
+              </p>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
+</section>

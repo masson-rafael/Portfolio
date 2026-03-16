@@ -1,0 +1,18 @@
+<section id="skills" aria-labelledby="skills-title">
+  <h2 id="skills-title">- Compétences -</h2>
+  <div class="container-xl">
+    @for (category of categories(); track category.title) {
+      <div class="skill-category mb-5">
+        <h3 class="category-title">{{ category.title }}</h3>
+        <div class="d-flex flex-wrap gap-2">
+          @for (skill of category.skills; track skill.name) {
+            <div class="skill-card">
+              <i [class]="skill.icon" [style.color]="skill.color" aria-hidden="true"></i>
+              <span class="skill-name">{{ skill.name }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,184 @@
+:host {
+  display: block;
+  background-color: var(--bg-white);
+}
+
+.parcours-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.parcours-tabs button {
+  background-color: white;
+  color: var(--text);
+  padding: 8px 20px;
+  border: 2px solid var(--border);
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.parcours-tabs button.active {
+  background-color: var(--orange);
+  color: white;
+  border-color: var(--orange);
+}
+
+.parcours-tabs button:hover:not(.active) {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: var(--border);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 0;
+  width: 50%;
+  padding-right: 40px;
+}
+
+.timeline-item.right {
+  margin-left: 50%;
+  padding-right: 0;
+  padding-left: 40px;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  background-color: var(--orange);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  right: -16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-dot i {
+  color: white;
+  font-size: 14px;
+}
+
+.timeline-item.right .timeline-dot {
+  left: -16px;
+  right: auto;
+}
+
+.timeline-content {
+  background: var(--bg-gray);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: left;
+  width: 100%;
+}
+
+.timeline-content h3 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.experience-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.experience-badge.is-alternance {
+  background-color: #e8f7ee;
+  color: #177245;
+}
+
+.experience-badge.is-stage {
+  background-color: #fff2df;
+  color: #9a5b00;
+}
+
+.timeline-content p {
+  margin: 4px 0;
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.timeline-content .location {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.timeline-content .location i {
+  margin-right: 4px;
+}
+
+.period {
+  display: inline-block;
+  margin-top: 8px;
+  background-color: var(--orange);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item,
+  .timeline-item.right {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 50px;
+    padding-right: 0;
+  }
+
+  .timeline-dot,
+  .timeline-item.right .timeline-dot {
+    left: 4px;
+    right: auto;
+  }
+
+  .title-row {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,83 @@
+<section id="parcours" aria-labelledby="parcours-title">
+  <h2 id="parcours-title">- Parcours -</h2>
+
+  <div class="parcours-tabs" role="tablist" aria-label="Type de parcours">
+    <button
+      role="tab"
+      [attr.aria-selected]="activeTab() === 'experiences'"
+      [class.active]="activeTab() === 'experiences'"
+      (click)="selectTab('experiences')">
+      Expériences
+    </button>
+    <button
+      role="tab"
+      [attr.aria-selected]="activeTab() === 'formation'"
+      [class.active]="activeTab() === 'formation'"
+      (click)="selectTab('formation')">
+      Formation
+    </button>
+  </div>
+
+  @switch (activeTab()) {
+    @case ('experiences') {
+      <div role="tabpanel" aria-label="Expérience">
+        <div class="timeline">
+          @for (item of experiences(); track item.title; let i = $index) {
+            <div class="timeline-item" [class.right]="i % 2 !== 0">
+              <div class="timeline-dot" aria-hidden="true">
+                <i class="fas fa-briefcase" aria-hidden="true"></i>
+              </div>
+              <div class="timeline-content">
+                <div class="title-row">
+                  <h3>{{ item.title }}</h3>
+                  <span
+                    class="experience-badge"
+                    [class.is-alternance]="item.badge === 'Alternance'"
+                    [class.is-stage]="item.badge === 'Stage'">
+                    {{ item.badge }}
+                  </span>
+                </div>
+                @if (item.location) {
+                  <p class="location">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    {{ item.location }}
+                  </p>
+                }
+                @if (item.description) {
+                  <p>{{ item.description }}</p>
+                }
+                <span class="period">{{ item.period }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+    @case ('formation') {
+      <div role="tabpanel" aria-label="Formation">
+        <div class="timeline">
+          @for (item of formations(); track item.title; let i = $index) {
+            <div class="timeline-item" [class.right]="i % 2 !== 0">
+              <div class="timeline-dot" aria-hidden="true">
+                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+              </div>
+              <div class="timeline-content">
+                <h3>{{ item.title }}</h3>
+                @if (item.location) {
+                  <p class="location">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    {{ item.location }}
+                  </p>
+                }
+                @if (item.description) {
+                  <p>{{ item.description }}</p>
+                }
+                <span class="period">{{ item.period }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  }
+</section>

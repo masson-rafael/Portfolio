@@ -1,0 +1,133 @@
+:host {
+  display: block;
+  background-color: var(--bg-white);
+}
+
+.about-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-photo-container {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.about-photo-container img {
+  border-radius: 10px;
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+}
+
+.about-photo-container::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 250px;
+  height: 350px;
+  border: 2px solid var(--orange);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.about-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.about-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.about-tabs button {
+  background-color: white;
+  color: var(--text);
+  padding: 8px 18px;
+  border: 2px solid var(--border);
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-tabs button.active {
+  background-color: var(--orange);
+  color: white;
+  border-color: var(--orange);
+}
+
+.about-tabs button:hover:not(.active) {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.about-text {
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid #e0e0e0;
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  text-align: left;
+  min-height: 200px;
+}
+
+.about-text h4 {
+  color: var(--orange);
+  margin: 16px 0 8px;
+}
+
+.about-text h4:first-child {
+  margin-top: 0;
+}
+
+.langues-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.langues-list li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.softskills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.softskills-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.softskills-list li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-photo-container::before {
+    display: none;
+  }
+}
