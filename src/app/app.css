@@ -19,7 +19,7 @@ main {
   border: none;
   margin: -80px auto;
   width: 50px;
-  border-top: 3px solid var(--border-light);
+  border-top: 3px solid var(--separator-color);
   border-radius: 2px;
 }
 
@@ -33,10 +33,22 @@ main {
   position: relative;
 }
 
+.section-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -100% -35%;
+  background: linear-gradient(120deg, transparent 35%, var(--section-shine) 50%, transparent 65%);
+  transform: rotate(14deg);
+  animation: sectionGlow 15s linear infinite;
+  pointer-events: none;
+}
+
 ::ng-deep .section-wrapper > * {
   /* Enforce resetting backgrounds if any child still expects to be the main background */
   background: transparent !important;
   border-radius: var(--radius-lg);
+  position: relative;
+  z-index: 1;
 }
 
 .section-wrapper:hover {
@@ -57,4 +69,13 @@ main {
 }
 .section-wrapper:nth-of-type(4) {
   background: linear-gradient(180deg, var(--bg-card), rgba(106, 164, 115, 0.05));
+}
+
+@keyframes sectionGlow {
+  from {
+    transform: translateX(-35%) rotate(14deg);
+  }
+  to {
+    transform: translateX(35%) rotate(14deg);
+  }
 }

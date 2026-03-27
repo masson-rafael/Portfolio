@@ -16,6 +16,11 @@
   --text-light: #4f6373;
   --text-muted: #7b8e9c;
   --border-light: #e8ecef;
+  --ambient-a: rgba(180, 222, 115, 0.42);
+  --ambient-b: rgba(222, 98, 115, 0.26);
+  --ambient-c: rgba(106, 164, 115, 0.22);
+  --section-shine: rgba(255, 255, 255, 0.26);
+  --separator-color: color-mix(in srgb, var(--border-light) 72%, var(--secondary) 28%);
 
   /* Utilities */
   --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.04);
@@ -34,6 +39,11 @@
   --text-light: #b0bec5;
   --text-muted: #6c757d;
   --border-light: #343a40;
+  --ambient-a: rgba(180, 222, 115, 0.2);
+  --ambient-b: rgba(222, 98, 115, 0.15);
+  --ambient-c: rgba(106, 164, 115, 0.14);
+  --section-shine: rgba(180, 222, 115, 0.08);
+  --separator-color: color-mix(in srgb, var(--border-light) 85%, var(--primary) 15%);
   
   --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.3);
@@ -50,6 +60,13 @@ html {
 body {
   font-family: 'Outfit', system-ui, -apple-system, sans-serif;
   background-color: var(--bg-main);
+  background-image:
+    radial-gradient(circle at 10% 14%, var(--ambient-a) 0, transparent 40%),
+    radial-gradient(circle at 86% 72%, var(--ambient-b) 0, transparent 42%),
+    radial-gradient(circle at 50% 92%, var(--ambient-c) 0, transparent 46%);
+  background-repeat: no-repeat;
+  background-size: 140% 140%;
+  animation: ambientShift 24s ease-in-out infinite alternate;
   color: var(--text-main);
   line-height: 1.6;
   margin: 0;
@@ -101,6 +118,15 @@ body {
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ambientShift {
+  from {
+    background-position: 0% 0%, 100% 100%, 45% 100%;
+  }
+  to {
+    background-position: 12% 6%, 86% 84%, 58% 88%;
+  }
 }
 
 .animate-fade-in {

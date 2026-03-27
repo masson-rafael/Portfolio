@@ -50,10 +50,21 @@
   border-radius: var(--radius);
   z-index: 0;
   transition: transform 0.3s ease;
+  animation: photoFrameFloat 7s ease-in-out infinite;
 }
 
 .about-photo-container:hover::before {
   transform: translate(-5px, -5px);
+}
+
+@keyframes photoFrameFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-3px, -4px);
+  }
 }
 
 .about-info {

@@ -2,32 +2,70 @@
   <h2 id="portfolio-title">- Portfolio -</h2>
 
   <div class="container-xl">
-    <div class="row g-4 justify-content-center">
-      @for (project of projects(); track project.title) {
-        <div class="col-12 col-lg-6">
-          <article class="project-card h-100">
-            <div class="card-image">
-              <img [ngSrc]="project.image" [alt]="project.imageAlt" width="370" height="250">
-            </div>
-            <div class="card-body">
-              <h3>{{ project.title }}</h3>
-              <p class="card-description">{{ project.description }}</p>
-              @if (project.link) {
-                <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="card-link">
-                  <i class="fab fa-github" aria-hidden="true"></i> Voir sur GitHub
-                </a>
-              }
-              <div class="card-languages">
-                @for (tech of project.technologies; track tech) {
-                  <span class="tech-badge" [style.background-color]="getTechColor(tech)">
-                    {{ tech }}
-                  </span>
-                }
-              </div>
-            </div>
-          </article>
+    <div class="carousel-shell" (mouseenter)="pauseAutoScroll()" (mouseleave)="resumeAutoScroll()" (focusin)="pauseAutoScroll()" (focusout)="resumeAutoScroll()">
+      <div class="carousel-head">
+        <div>
+          <h3 class="carousel-title">{{ activeProject().title }}</h3>
         </div>
-      }
+        <div class="carousel-controls" aria-label="Navigation du carrousel projets">
+          <button type="button" class="carousel-control" (click)="previousProject()" aria-label="Projet précédent">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="carousel-control" (click)="nextProject()" aria-label="Projet suivant">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="carousel-viewport" aria-live="polite">
+        <div class="carousel-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
+          @for (project of projects(); track project.title) {
+            <article class="project-slide">
+              <div class="project-card">
+                <div class="card-image">
+                  <img [ngSrc]="project.image" [alt]="project.imageAlt" width="420" height="290">
+                </div>
+                <div class="card-body">
+                  <p class="card-description">{{ project.description }}</p>
+
+                  <ul class="project-focus-list">
+                    @for (focus of project.focuses; track focus) {
+                      <li>{{ focus }}</li>
+                    }
+                  </ul>
+
+                  @if (project.link) {
+                    <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="card-link">
+                      <i class="fab fa-github" aria-hidden="true"></i> Voir sur GitHub
+                    </a>
+                  }
+
+                  <div class="card-languages">
+                    @for (tech of project.technologies; track tech) {
+                      <span class="tech-badge" [style.background-color]="getTechColor(tech)" [style.color]="getTechTextColor(tech)">
+                        {{ tech }}
+                      </span>
+                    }
+                  </div>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+
+      <div class="carousel-dots" aria-label="Aller à un projet spécifique">
+        @for (project of projects(); track project.title; let index = $index) {
+          <button
+            type="button"
+            class="carousel-dot"
+            [class.active]="currentSlide() === index"
+            [attr.aria-label]="'Voir le projet ' + project.title"
+            [attr.aria-current]="currentSlide() === index ? 'true' : null"
+            (click)="goToSlide(index)">
+          </button>
+        }
+      </div>
     </div>
   </div>
 </section>

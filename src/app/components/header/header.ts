@@ -1,4 +1,4 @@
-import { Component, signal, ChangeDetectionStrategy, Inject, PLATFORM_ID, OnInit, HostListener } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 interface NavLink {
@@ -9,6 +9,9 @@ interface NavLink {
 @Component({
   selector: 'app-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(window:scroll)': 'onScroll()'
+  },
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
@@ -26,7 +29,6 @@ export class Header implements OnInit {
 
   constructor(@Inject(DOCUMENT) private document: Document, @Inject(PLATFORM_ID) private platformId: Object) {}
 
-  @HostListener('window:scroll')
   onScroll() {
     if (isPlatformBrowser(this.platformId)) {
       this.isAtTop.set(window.scrollY < 20);

@@ -2,7 +2,10 @@
   <nav class="navbar" [class.transparent]="isAtTop()" aria-label="Navigation principale">
     <div class="navbar-branding">
       <a href="#header" class="navbar-logo" aria-label="Retour en haut">RM</a>
-      <span class="navbar-name">Rafael Masson</span>
+      <div class="navbar-brand-text">
+        <span class="navbar-name">Rafael Masson</span>
+        <span class="navbar-role">Portfolio • Full Stack</span>
+      </div>
     </div>
     <ul class="navbar-list" role="list">
       @for (link of navLinks(); track link.fragment) {

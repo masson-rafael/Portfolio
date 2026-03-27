@@ -6,11 +6,12 @@ import { Skills } from './components/skills/skills';
 import { Parcours } from './components/parcours/parcours';
 import { Portfolio } from './components/portfolio/portfolio';
 import { Contact } from './components/contact/contact';
+import { AppFooter } from './components/footer/footer';
 
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Header, About, Skills, Parcours, Portfolio, Contact],
+  imports: [Header, About, Skills, Parcours, Portfolio, Contact, AppFooter],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

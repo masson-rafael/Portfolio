@@ -40,6 +40,12 @@
   gap: 12px;
 }
 
+.navbar-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
 .navbar-logo {
   font-size: 20px;
   font-weight: 700;
@@ -67,6 +73,35 @@
   font-weight: 700;
   color: var(--text-main);
   letter-spacing: -0.5px;
+}
+
+.navbar-role {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.navbar.transparent .navbar-name,
+.navbar.transparent .navbar-role,
+.navbar.transparent .navbar-list a,
+.navbar.transparent .theme-toggle {
+  color: #ffffff;
+}
+
+.navbar.transparent .navbar-list li:nth-last-child(2) a {
+  color: #1a2328;
+  background-color: color-mix(in srgb, #ffffff 92%, transparent);
+}
+
+.navbar.transparent .navbar-list li:nth-last-child(2) a:hover {
+  color: #ffffff;
+  background-color: var(--secondary);
+}
+
+.navbar.transparent .navbar-list a::after {
+  background-color: #ffffff;
 }
 
 .navbar-list {
